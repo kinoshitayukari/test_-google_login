@@ -23,6 +23,9 @@ GOOGLE_DISCOVERY_URL = (
     "https://accounts.google.com/.well-known/openid-configuration"
 )
 
+REDIRECT_URI = "https://test-goo.azurewebsites.net/login/callback"
+URI = "https://test-goo.azurewebsites.net"
+
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY") or os.urandom(24)
 login_manager = LoginManager()
@@ -63,7 +66,6 @@ def index():
 
 @app.route("/login")
 def login():
-    REDIRECT_URI = "https://test-goo.azurewebsites.net/login/callback"
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
     request_uri = client.prepare_request_uri(
@@ -78,11 +80,12 @@ def callback():
     code = request.args.get("code")
     google_provider_cfg = get_google_provider_cfg()
     token_endpoint = google_provider_cfg["token_endpoint"]
-
+    
+    authorization_response = URI + request.full_path
     token_url, headers, body = client.prepare_token_request(
         token_endpoint,
-        authorization_response=request.url,
-        redirect_url=request.base_url,
+        authorization_response=authorization_response,
+        redirect_url=REDIRECT_URI,
         code=code,
     )
     token_response = requests.post(
