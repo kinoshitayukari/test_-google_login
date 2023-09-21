@@ -4,3 +4,4 @@ oauthlib
 pyOpenSSL
 Flask-Login
 jinja2
+gunicorn
