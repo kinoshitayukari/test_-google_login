@@ -16,8 +16,6 @@ import requests
 # Internal imports
 from db import init_db
 from user import User
-from pyngrok import ngrok
-ngrok.set_auth_token("2TudUFUC2Ekhiutl3cLbYAFvv5t_dEgJDRM4Ry9X1UYVZMet")
 
 GOOGLE_CLIENT_ID = "764086277574-78uskoq0q70ldetks4986a1g4s5bqd9h.apps.googleusercontent.com"
 GOOGLE_CLIENT_SECRET = "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"
