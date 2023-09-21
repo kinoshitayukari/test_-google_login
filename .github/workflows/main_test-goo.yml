@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'test-goo'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A5273DCB6C964E29B5189F2D6B66D88A }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F0E5229272045B4A0C754ECE368BB37 }}
