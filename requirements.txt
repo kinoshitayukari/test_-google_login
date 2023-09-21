@@ -5,3 +5,5 @@ pyOpenSSL
 Flask-Login
 jinja2
 gunicorn
+Flask-OAuthlib
+Flask-SQLAlchemy
