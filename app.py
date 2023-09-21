@@ -63,15 +63,15 @@ def index():
 
 @app.route("/login")
 def login():
+    REDIRECT_URI = "https://test-goo.azurewebsites.net/login/callback"
     google_provider_cfg = get_google_provider_cfg()
     authorization_endpoint = google_provider_cfg["authorization_endpoint"]
     request_uri = client.prepare_request_uri(
         authorization_endpoint,
-        redirect_uri=request.base_url + "/callback",
+        redirect_uri=REDIRECT_URI,
         scope=["openid", "email", "profile"],
     )
     return redirect(request_uri)
-
 
 @app.route("/login/callback")
 def callback():
